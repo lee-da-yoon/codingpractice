@@ -1,0 +1,22 @@
+#include <stdio.h>
+void sub(int param);
+
+int main(void)
+{
+  auto int n=10;
+  printf("%d\n", n);
+  for (ont m=0, sum=0 ; m<3; M++)
+  {
+    sum += m;
+    printf("\t%d %d\n, m, sum);
+  }
+ printf("%d\n", n);
+ sub(20);
+ return 0;
+}
+void sub(int param)
+{
+  auto int local = 100;
+  printf("\t%d %d\n", param, local);
+}
+ 

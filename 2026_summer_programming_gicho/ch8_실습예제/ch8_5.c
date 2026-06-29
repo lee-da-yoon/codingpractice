@@ -2,7 +2,7 @@
 # include <stdio.h>
 
 # define ROWSIZE 4
-# define COLSIZE 3
+# define COLSIZE 2
 
 int main(void)
 {
@@ -11,8 +11,8 @@ int main(void)
     int score[][COLSIZE] = {95, 85, 90, 88, 86, 90, 88, 78};
     printf("      중간     기말 \n");
     printf("     -----------------\n");
-     for (int i = 0; i < ROWSIZE; i++)
-     {
+    for (int i = 0; i < ROWSIZE; i++)
+{
         for (int j =0; j < COLSIZE; j++)
         {
             printf("%10d ", score[i][j]);
