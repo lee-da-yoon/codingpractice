@@ -1,0 +1,13 @@
+// 파일에서 데이터를 읽어 2차원 a 배열에 저장, p 배열을 사용해서 배열 a 원소를 출력하시오??
+
+# include <stdio.h>
+# include <stdlib.h>
+
+int main(){
+    FILE *f;
+    f = fopen("f4.txt", "r"); // 파일 읽기로 열기 
+    int n;
+
+    //포인터배열이 뭐더라... ㅋ
+
+}
