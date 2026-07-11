@@ -1,6 +1,6 @@
 # include <stdio.h>
 int main(){
-    const char *days[7] = {
+    const char *days[7] = { // 상수 포인터배열?? 
         "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday" 
     };
 
