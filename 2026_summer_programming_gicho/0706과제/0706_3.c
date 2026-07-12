@@ -20,3 +20,20 @@
 //     return 0;
 // }
 
+int main (){
+    FILE *f = fopen("f3.txt", "r");
+    FILE *f2 = fopen("f3out.txt", "w");
+    char c;
+    int sum= 0;;
+    while ((c = fgetc(f)) != EOF) {
+        if ((c <= 57) && (c >= 48)){
+        fputc(c, f2);
+        int num = c - '0';
+        sum += num;
+        }
+    }
+    printf("%d", sum);
+    fclose(f);
+    fclose(f2);
+    return 0;
+}

@@ -24,6 +24,8 @@ int main() {
 	for (int i = 0; i < n; i++) { // 메모리 해제
 		free(p[i]);
 	}
+
+	free (p);
 	fclose(f);
 	return 0;
 }

@@ -3,44 +3,85 @@
 # include <stdlib.h>
 
 
-int *buildArray(int *size); // 함수 원형
-int findMin(int *ary, int size); // 함수 원형 
+// int *buildArray(int *size); // 함수 원형
+// int findMin(int *ary, int size); // 함수 원형 
 
-int main(){
-FILE *f;
-f = fopen("f2.txt", "r"); // 파일 읽기로 열기 
-int n;
-fscanf(f, "%d", &n);  // 첫 줄의 숫자 (=배열의 크기)를 n에 넣음
-fclose(f); //함수 내에서 다시 여니까 일단 닫기?
-
-
-int *arr = buildArray(&n); // 함수 호출 - 결과로 나온 배열을 main 함수 내의 arr 배열에 저장
-int answer = findMin(arr, n);
-printf("%d", answer);
-
-return 0;
-}
+// int main(){
+// FILE *f;
+// f = fopen("f2.txt", "r"); // 파일 읽기로 열기 
+// int n;
+// fscanf(f, "%d", &n);  // 첫 줄의 숫자 (=배열의 크기)를 n에 넣음
+// fclose(f); //함수 내에서 다시 여니까 일단 닫기?
 
 
-int *buildArray(int *size){ //함수 정의하기 
-    int *a;
-    int k; //그냥 임시로...
-    a = (int *) malloc(sizeof (int) * *size); // 크기가 size인 a라는 배열을 만들기
+// int *arr = buildArray(&n); // 함수 호출 - 결과로 나온 배열을 main 함수 내의 arr 배열에 저장
+// int answer = findMin(arr, n);
+// printf("%d", answer);
+
+// return 0;
+// }
+
+
+// int *buildArray(int *size){ //함수 정의하기 
+//     int *a;
+//     int k; //그냥 임시로...
+//     a = (int *) malloc(sizeof (int) * *size); // 크기가 size인 a라는 배열을 만들기
+//     FILE *f = fopen("f2.txt", "r");
+//     fscanf(f, "%d", &k); // 함수를 이렇게 짜도 되는지는 모르겠으나... 두번째줄부터 읽어야 하니까? 첫 줄은 딴데로 치워두기
+//     for (int i = 0; i < *size; i++){
+//         fscanf(f, "%d", &a[i]); // 두번째줄의 정수를 읽기
+//     }
+//     fclose(f); // 함수 내에서 연 거 다시 닫기
+//     return a; // a라는 배열을 return
+// }
+
+
+// int findMin(int *ary, int size){ // 최솟값 구하는 함수 정의하기 
+//     int min = ary[0];
+//     for (int i =0; i < size; i++){
+//     if (ary[i] < min)
+//         min = ary[i];
+//     }
+//     return min;
+// }
+
+int* buildArray(int *size);
+int findMin (int *ary, int size);
+
+int main (){
     FILE *f = fopen("f2.txt", "r");
-    fscanf(f, "%d", &k); // 함수를 이렇게 짜도 되는지는 모르겠으나... 두번째줄부터 읽어야 하니까? 첫 줄은 딴데로 치워두기
-    for (int i = 0; i < *size; i++){
-        fscanf(f, "%d", &a[i]); // 두번째줄의 정수를 읽기
-    }
-    fclose(f); // 함수 내에서 연 거 다시 닫기
-    return a; // a라는 배열을 return
+    int n;
+    fscanf(f, "%d", &n); // fscanf 이상하게 합치지 말고 - n에 들어갈 값 != 반환값 
+    fclose(f);
+
+    int min;
+    int *arr = buildArray(&n); // free 때문에 따로 이름 만들어줘야하는듯? 
+    min = findMin(arr, n);
+    printf("%d", min);
+
+    free (arr);
+    return 0;
 }
 
+int* buildArray(int *size) { 
+    int *ary;
+    ary = (int*)malloc(sizeof(int) * *size);
+        FILE *f = fopen("f2.txt", "r"); // 다시 열었으니까 첫 줄 부터임 - 첫번째 n에 들어간 거는 다시 버려줘야 한다  
+        int trash;
+        fscanf(f, "%d", &trash);
+        for (int i = 0 ; i < *size; i++){    
+            fscanf(f, "%d", &ary[i]);
+        }
+    fclose(f);
+    return ary;
+}
 
-int findMin(int *ary, int size){ // 최솟값 구하는 함수 정의하기 
+int findMin (int *ary, int size){
     int min = ary[0];
-    for (int i =0; i < size; i++){
-    if (ary[i] < min)
-        min = ary[i];
+    for (int i = 0; i < size; i++){
+        if (ary[i] < min){
+            min = ary[i];
+        }
     }
     return min;
 }

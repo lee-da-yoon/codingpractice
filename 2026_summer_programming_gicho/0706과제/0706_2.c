@@ -48,25 +48,38 @@
 6 연 파일 닫기
 */
 
-int main(){
-    FILE *f;
-    f = fopen("f2.txt", "r");
-    int a;
-    int sum = 0;
-    // char ch[256];
-    // while ((fgets(ch, 256, f)) != NULL){
-    //     printf("...");
-    //     printf("%s", ch);
-    // }
-    while (fscanf(f, "%d", &a) == 1){
-            // printf("%d\n", a);
-            if (a >= 90){
-                sum += 1;
+// int main(){
+//     FILE *f;
+//     f = fopen("f2.txt", "r");
+//     int a;
+//     int sum = 0;
+//     // char ch[256];
+//     // while ((fgets(ch, 256, f)) != NULL){
+//     //     printf("...");
+//     //     printf("%s", ch);
+//     // }
+//     while (fscanf(f, "%d", &a) == 1){
+//             // printf("%d\n", a);
+//             if (a >= 90){
+//                 sum += 1;
+//             }
+//     }
+//     printf("90점 이상 데이터 개수: \n%d", sum);
+//     fclose(f);
+//     return 0;
+// }
+
+int main (){
+    FILE *f = fopen("f2.txt", "r");
+    int data, count = 0;
+    while (1){
+        if (fscanf(f, "%d", &data) != EOF){
+            if ( data >= 90)
+                count++;
             }
+        else  break;
     }
-    printf("90점 이상 데이터 개수: \n%d", sum);
+    printf("90점 이상 데이터 개수:\n%d", count);
     fclose(f);
     return 0;
 }
-
-
