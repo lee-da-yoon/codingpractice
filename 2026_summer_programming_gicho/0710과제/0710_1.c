@@ -35,7 +35,8 @@ int main(){
     for (int i = 0; i < rows; i++){ // 메모리 해제
         free(arr[i]);
     }
-    free(arr); //파일 닫기
+    free(arr); 
+    free (avg);
     fclose(f);
     return 0;    
 }
@@ -52,7 +53,6 @@ double * calculateColumnAverages( int **Arr, int rows, int cols){ // 함수 정의
         sum[j] = sum[j] / rows;  // 더한 걸 열 개수로 나누어 평균 구하기 
     }
     return sum; // 결과 배열 반환
-    free (sum); // 메모리 해제
 }
 
 void printAverages(double *avg, int cols){ // 출력함수 

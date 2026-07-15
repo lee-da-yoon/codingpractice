@@ -37,8 +37,7 @@ int *squareArray(const int *ary, int size){  // 배열 원소를 제곱하는 함수
     ary2 = (int*)malloc(size * sizeof(int));
     for (int i = 0; i < size; i++){
         ary2[i] = ary[i] * ary[i];
-    }    
-    free(ary2);
+    } 
     return ary2;
 }
 
